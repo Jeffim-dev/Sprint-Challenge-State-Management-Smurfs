@@ -31,3 +31,13 @@ button {
   margin: 16px auto;
   text-align: left;
 }
+
+.error {
+  padding: 16px;
+  background-color: #ffb7b7;
+  color: red;
+  border: solid 1px #f39595;
+  border-radius: 4px;
+  max-width: 300px;
+  margin: 16px auto;
+}

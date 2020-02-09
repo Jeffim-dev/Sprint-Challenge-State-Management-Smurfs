@@ -18,20 +18,20 @@ export const getSmurf = () => dispatch => {
       })
       .catch(err => {
         console.log(err);
-        dispatch({ type: FETCH_SMURF_SUCCESS, payload: err })
+        dispatch({ type: FETCH_SMURF_SUCCESS, payload: "Error getting data!!!" })
      })
 }
 
 export const addSmurf = newSmurf => dispatch => {
   dispatch({ type: POST_SMURF_START });
   axios
-       .post("http://localhost:3333/smurfs", newSmurf)
+       .post("http://localhost:3333/smufs", newSmurf)
        .then(res=> {
           console.log("Post", res);
           dispatch({ type: POST_SMURF_SUCCESS, payload: res.data });
        })
        .catch(err => {
           console.log(err);
-          dispatch({ type: POST_SMURF_FAILURE, payload: err });
+          dispatch({ type: POST_SMURF_FAILURE, payload: "Error sending data!!!" });
        });
 };

@@ -12,8 +12,14 @@ const SmurfList = props => {
     <>
       <SmurfForm addSmurf={props.addSmurf} />
       <div>
-        {props.smurfs.map(smurf => (
-          <div className="note" key={smurf.id}>{smurf.name}, {smurf.age}, {smurf.height}</div>
+        { props.error ? (
+          <div className="error">{props.error}</div>
+          ) :( 
+          props.smurfs.map(smurf =>(
+            <div className="note" key={smurf.id}>
+              {smurf.name}, {smurf.age}years old, {smurf.height}cm
+            </div>
+          )
         ))}
       </div>
      </>
