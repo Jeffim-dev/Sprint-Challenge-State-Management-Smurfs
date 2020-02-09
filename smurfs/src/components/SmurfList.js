@@ -1,28 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getSmurf } from '../actions';
+import { getSmurf, addSmurf } from '../actions';
+
+import SmurfForm from "./SmurfForm";
 
 const SmurfList = props => {
+
  
   return (
     <>
-     <button onClick={props.getSmurf}>Get Smurf</button>    
-      {props.smurf.map(smurf => (
-        <div>name:{smurf.name} Age:{smurf.age} Height:{smurf.height}</div>
-      ))}   
+      <SmurfForm addSmurf={props.addSmurf} />
+      <div>
+        {props.smurfs.map(smurf => (
+          <div className="note" key={smurf.id}>{smurf.name}, {smurf.age}, {smurf.height}</div>
+        ))}
+      </div>
      </>
   );
 }
 
 const mapStateToProps = state => {
   return ({
-    smurf: state.smurf,
+    smurfs: state.smurfs,
     error: state.error
   })
 }
 
 export default connect(
   mapStateToProps,
-  { getSmurf }
+  { getSmurf, addSmurf }
 ) (SmurfList);
